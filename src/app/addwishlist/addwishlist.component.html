@@ -1,0 +1,50 @@
+<div class="jumbotron">
+
+  <form #productform="ngForm"  (ngSubmit)="onSubmit()">
+
+     
+      <div class="form-group">
+          <label for="pid">Enter Product Id </label>
+          <input required [(ngModel)]="wish.product.productid" #id="ngModel" type="text" pattern="[0-9]+" class="form-control" name="pid"  id="pid" >
+          <div *ngIf="id.invalid && (id.dirty || id.touched)" class="alert alert-danger">
+            <div *ngIf="id.errors.required">
+              Id is required.
+           </div>
+          <div *ngIf="id.errors.pattern">
+            Id should contain only numbers.
+         </div>
+         </div>
+        </div>
+        <div class="form-group">
+          <label for="uid">Enter User Id </label>
+          <input required [(ngModel)]="wish.user.userid" #id="ngModel" type="text" pattern="[0-9]+" class="form-control" name="uid"  id="uid" >
+          <div *ngIf="id.invalid && (id.dirty || id.touched)" class="alert alert-danger">
+            <div *ngIf="id.errors.required">
+              Id is required.
+           </div>
+          <div *ngIf="id.errors.pattern">
+            Id should contain only numbers.
+         </div>
+         </div>
+        </div>
+
+     
+
+      <button [disabled]="!productform.form.valid" type="submit" class="btn btn-success">Submit</button>
+
+     <!-- <button   (click)="addProduct()" type="submit" class="btn btn-primary"> Add Product  </button> -->
+
+    </form>
+
+</div>
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>
+<br>
+<br>
+<div>
+  <h2>Wishlist Added success</h2>
+  <h1>{{ list.product.productid }}</h1>
+  <h1>{{ list.user.userid }}</h1>
+</div>

@@ -1,0 +1,24 @@
+<div>
+
+    <table class="table table-hover">
+      <tbody>
+        <tr>
+          <th>S.No</th>
+          <th>Product Id</th>
+          <th>Product Name</th>
+          <th>Price</th>
+        </tr>
+  
+       <tr *ngFor="let product of arr ;let i=index">
+         <td>{{i}}</td>
+         <td>{{product.productid}}</td>
+         <td>{{product.productname}}</td>
+         <td>{{product.price}}</td>
+         <td><button (click)="add(product.productid)" class="btn btn-primary">Add To Wishlist</button></td>
+       </tr>
+      </tbody>
+  
+    </table>
+  
+  </div>
+ 

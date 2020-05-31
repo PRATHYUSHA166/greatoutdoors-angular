@@ -1,0 +1,58 @@
+<div class="jumbotron">
+
+  <form #productform="ngForm"  (ngSubmit)="onSubmit()">
+
+     
+
+      <div class="form-group">
+          <label for="pname">Enter Product Name </label>
+          <input  required [(ngModel)]="prod.productname" pattern="[a-zA-Z ]+" minlength="4" #productname="ngModel"  type="text"  class="form-control" name="pname"  id="pname">
+          <div *ngIf="productname.invalid && (productname.dirty || productname.touched)" class="alert alert-danger">
+        <div *ngIf="productname.errors.required">
+            product Name is required.
+           </div>
+          <div *ngIf="productname.errors.minlength">
+             product Name Name must be at least 4 characters long.
+         </div>
+          <div *ngIf="productname.errors.pattern">
+            product Name should contain only characters.
+          </div>
+         </div>
+      </div>
+
+
+      <div class="form-group">
+          <label for="price">Enter Price </label>
+          <input required [(ngModel)]="prod.price" #price="ngModel"  type="text" pattern="[0-9]+\.[0-9]+"  class="form-control" name="price"  id="price">
+          <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
+            <div *ngIf="price.errors.required">
+                price is required.
+               </div>
+              <div *ngIf="price.errors.pattern">
+                price should be in this format (100.01).
+              </div>
+             </div>
+      </div>
+
+
+
+      <button [disabled]="!productform.form.valid" type="submit" class="btn btn-success">Submit</button>
+
+     <!-- <button   (click)="addProduct()" type="submit" class="btn btn-primary"> Add Product  </button> -->
+
+    </form>
+
+</div>
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>
+<br>
+<br>
+
+<div *ngIf="temp.price>0">
+  <h2>Product Added success</h2>
+  <h1>{{ temp.productid }}</h1>
+  <h1>{{ temp.productname }}</h1>
+  <h1>{{ temp.price }}</h1>
+</div>
